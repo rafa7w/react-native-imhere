@@ -1,9 +1,11 @@
 // Arquivos cuja extensão é .jsx significa que vamos utilizar a sintaxe JSX com TypeScript
-import { Text, View, TextInput, TouchableOpacity } from 'react-native'
+import { Text, View, TextInput, TouchableOpacity, FlatList } from 'react-native'
 import { Participant } from '../../components/Participant'
 import { styles } from './styles'
 
 export function Home() {
+
+  const participants = ['Rafael', 'Gabriela', 'Marcos', 'Adriani']
 
   function handleParticipantAdd() {
     console.log('Adicionar')
@@ -36,8 +38,19 @@ export function Home() {
         </TouchableOpacity>
       </View>
 
-      
-      <Participant name='Rafael' onRemove={handleParticipantRemove}/>
+      <FlatList 
+        data={participants}
+        keyExtractor={item => item}
+        renderItem={({item}) => (
+          <Participant name={item} onRemove={handleParticipantRemove}/>
+        )}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <Text style={styles.listEmptyText}>
+            Ninguém chegou no evento ainda? Adicione participantes a sua lista de presença.
+          </Text>
+        )}
+      />
       
     </View>
 

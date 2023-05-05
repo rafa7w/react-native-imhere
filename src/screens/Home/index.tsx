@@ -1,8 +1,13 @@
 // Arquivos cuja extensão é .jsx significa que vamos utilizar a sintaxe JSX com TypeScript
-import { Text, View, TextInput } from 'react-native'
+import { Text, View, TextInput, TouchableOpacity } from 'react-native'
 import { styles } from './styles'
 
 export function Home() {
+
+  function handleParticipantAdd() {
+    console.log('Você clicou no botão de adicionar')
+  }
+
   return (
     // Um componente não pode retornar mais de um elemento 
     <View style={styles.container}>
@@ -15,6 +20,12 @@ export function Home() {
         placeholderTextColor='#6B6B6B'
         // keyboardType
       />
+
+      <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
+        <Text style={styles.buttonText}>
+          +
+        </Text>
+      </TouchableOpacity>
     </View>
 
   )

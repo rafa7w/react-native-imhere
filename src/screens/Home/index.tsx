@@ -1,5 +1,6 @@
 // Arquivos cuja extensão é .jsx significa que vamos utilizar a sintaxe JSX com TypeScript
 import { Text, View, TextInput, TouchableOpacity } from 'react-native'
+import { Participant } from '../../components/Participant'
 import { styles } from './styles'
 
 export function Home() {
@@ -29,6 +30,9 @@ export function Home() {
           </Text>
         </TouchableOpacity>
       </View>
+
+      <Participant />
+      <Participant />
     </View>
 
   )

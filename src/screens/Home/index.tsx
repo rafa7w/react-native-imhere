@@ -1,16 +1,20 @@
 // Arquivos cuja extensão é .jsx significa que vamos utilizar a sintaxe JSX com TypeScript
+import React, { useState } from 'react'
 import { Text, View, TextInput, TouchableOpacity, FlatList, Alert } from 'react-native'
 import { Participant } from '../../components/Participant'
 import { styles } from './styles'
 
 export function Home() {
 
-  const participants = ['Rafael', 'Gabriela', 'Marcos', 'Adriani']
+  const [participants, setParticipants] = useState<string[]>([])
+  const [participantName, setParticipantName] = useState('')
 
   function handleParticipantAdd() {
-    if (participants.includes('Rafael')) {
+    if (participants.includes(participantName)) {
       return Alert.alert('Participante Existe', 'Já existe um participante na lista com esse nome.')
     }
+    setParticipants(prevState => [...prevState, participantName])
+    setParticipantName('')
   }
 
   function handleParticipantRemove(name: string) {
@@ -35,6 +39,8 @@ export function Home() {
           style={styles.input}
           placeholder='Nome do paticipante'
           placeholderTextColor='#6B6B6B'
+          onChangeText={text => setParticipantName(text)} // pode só passar o setParticipanteName também 
+          value={participantName}
           // keyboardType
         />
 

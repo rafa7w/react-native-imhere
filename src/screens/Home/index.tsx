@@ -6,11 +6,16 @@ import { styles } from './styles'
 export function Home() {
 
   function handleParticipantAdd() {
-    console.log('Você clicou no botão de adicionar')
+    console.log('Adicionar')
+  }
+
+  function handleParticipantRemove() {
+    console.log('Remover')
   }
 
   return (
     // Um componente não pode retornar mais de um elemento 
+    // Se precisar passar parâmetro na função onRemove={() => func(params)}
     <View style={styles.container}>
       <Text style={styles.eventName}>Nome do Evento</Text>
       <Text style={styles.eventDate}>Sexta, 4 de Novembro de 2022.</Text>
@@ -31,10 +36,9 @@ export function Home() {
         </TouchableOpacity>
       </View>
 
-      <Participant name='Rafael'/>
-      <Participant name='Amanda'/>
-      <Participant name='Gabriela'/>
-      <Participant name='Zanete'/>
+      
+      <Participant name='Rafael' onRemove={handleParticipantRemove}/>
+      
     </View>
 
   )
